@@ -1,6 +1,8 @@
 import face_recognition
 import cv2
 import numpy as np
+from bs4 import BeautifulSoup
+import re
 
 # This is a demo of running face recognition on live video from your webcam. It's a little more complicated than the
 # other example, but it includes some basic performance tweaks to make things run a lot faster:
@@ -13,11 +15,10 @@ import numpy as np
 
 # Get a reference to webcam #0 (the default one)
 class FaceRecognition():
-    
 
     def scan(img,nombre):
         video_capture = cv2.VideoCapture(0)
-
+        i = 0
         # Load a sample picture and learn how to recognize it.
         #lost_image = face_recognition.load_image_file(img)
         
@@ -32,7 +33,10 @@ class FaceRecognition():
         face_encodings = []
         face_names = []
         process_this_frame = True
-
+        
+        #found people count
+        
+        
         while True:
             # Grab a single frame of video
             ret, frame = video_capture.read()
@@ -69,13 +73,11 @@ class FaceRecognition():
                     face_names.append(name)
             
                 print (face_names)
-                i=0
                 if face_names == [nombre]:
-                    cv2.imwrite('imgs/found'+str(i)+'.jpg',frame)
-                    i+=1
-                    known_face_names = []
-                    known_face_encodings = []
+                    known_face_names = None
+                    known_face_encodings = None
                     break
+                
 
             process_this_frame = not process_this_frame
 
@@ -103,5 +105,19 @@ class FaceRecognition():
                 break
 
         # Release handle to the webcam
+        cv2.imwrite('static/imgs/found'+str(i)+'.png',frame)
+        cnt = cv2.imencode('.png',frame)[1]
+        
+        pic = cnt
+        html = BeautifulSoup('templates/result.html','html.parser')
+        
+        target = html.find_all(text=re.compile("#nombre"))
+        for v in target:
+            v.replace_with(v.replace('#nombre',str(nombre)))
+
+        pictarget = html.find_all(text=re.compile("#img"))
+        for v in pictarget:
+            v.replace_with(v.replace('#img',str(pic)))
+
         video_capture.release()
         cv2.destroyAllWindows()
