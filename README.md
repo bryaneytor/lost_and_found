@@ -17,3 +17,4 @@ dlib==19.19.99
 
 Creditos a https://github.com/ageitgey por la libreria face_recognition
 
+Desarrollado por Lucy y Bryan
