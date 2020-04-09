@@ -2,10 +2,10 @@
 
 Una aplicacion web de reconocimiento facial para encontrar personas perdidas
 
-#Uso
+# Uso
 para ejecutar esta webapp solo debe correr el archivo app.py y abrir localhost:5000 en un navegador
 
-#Instalacion
+# Instalacion
 Este proyecto tiene dependencias de python3 y es oficialmente compatible con Linux y Mac.
 En Windows no es oficialmente compatible ya que la instalacion de dlib es inestable. 
 
