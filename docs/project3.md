@@ -9,6 +9,6 @@ Esta aplicación tendrá las siguientes vistas
 
 A la hora de subir la informacion de la persona perdida una cámara se activara en tiempo real buscara al individuo en cuestión. Cuando este sea encontrado se le redirecciona a la pagina de resultados donde se podra ver donde se vio la persona.
 
-El componente de reconocimiento facial debe sera independiente. por lo que puede ser portable.
+El componente de reconocimiento facial sera independiente. por lo que puede ser portable.
 
 Las tecnologias que se tenia en mente para hacer este sistema eran Angular, ASP.NET y Python. Se decidio al final utilizar completamente Python para desarrollar la parte Web y el Backend.
