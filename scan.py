@@ -106,6 +106,7 @@ class FaceRecognition():
 
         # Release handle to the webcam
         cv2.imwrite('static/imgs/found'+str(i)+'.png',frame)
+        
         cnt = cv2.imencode('.png',frame)[1]
         
         pic = cnt
